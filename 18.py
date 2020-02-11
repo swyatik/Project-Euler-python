@@ -73,3 +73,13 @@ print('Time seconds: %.5f' % (time.time() - ts))
 
 # the maximum total from top to bottom of the triangle below:  1074
 # Time seconds: 0.00100
+
+''' шукаємо більший елемент та додаємо до нижнього, далі так само
+    8  5  9   3
+     \ /\ /\ /
+      2  4  6   10  13  15
+       \ /\ /    \ /  \ /
+        7  4      7    4    20  19
+         \/        \  /      \  /
+          3          3         3    23
+'''
