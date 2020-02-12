@@ -20,11 +20,44 @@
 # the sum of two abundant numbers.
 
 import time
+
 ts = time.time()
 
+max_num = 28123
 
 
+def abundant(num):  # визначаємо всі надмірні числа від 12 до 28123
+    list_abundant = []
+    for i in range(11, num + 1):
+        l = []
+        for j in range(1, i // 2 + 1):  # визначаємо всі дільники
+            if i % j == 0:
+                l.append(j)
+        if sum(l) > i:  # якщо сума дільників більша числа то додаємо в список
+            list_abundant.append(i)
+
+    return list_abundant
+
+
+l_abundant = abundant(max_num)
+l_positive = []
+for i in range(1, max_num + 1):  # шукаємо числа, що не складені з двох abundant
+    if i < 24:  # всі числа до 23 не можуть бути складені з abundant
+        l_positive.append(i)  # додаємо їх у список
+    else:
+        # пробігаємось по списку abundant і шукаємо різницю
+        # (з кожним елементом не більшого за число)
+        # якщо різниця є у списку то зупиняємо цикл, бо число може бути
+        # складене з двох abundant, інакше додаємо у список
+        for j in l_abundant:
+            if j < i and i - j in l_abundant:
+                break
+        else:
+            l_positive.append(i)
+
+
+print('The sum:', sum(l_positive))
 print('Time seconds: %.5f' % (time.time() - ts))
 
-# The total of all the name scores in the file:  871198282
-# Time seconds: 0.01562
+# The sum:  871198282
+# Time seconds: 539.49628
