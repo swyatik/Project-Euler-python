@@ -18,11 +18,11 @@ def divisor(n):
 
 def prime(list):
     l_prime = []
-    for i in list:
+    for item in list:
         l = []
-        for j in range(1, i + 1):
-            if i % j == 0:
-                l.append(i)
+        for j in range(1, item + 1):
+            if item % j == 0:
+                l.append(item)
         if len(l) == 2:
             l_prime.append(j)
             
